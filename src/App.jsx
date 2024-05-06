@@ -1,14 +1,28 @@
+import {createBrowserRouter, RouterProvider} from "react-router-dom"
+import LoginPage from "./pages/LoginPage"
+import BrowsePage from "./pages/BrowsePage"
 
-import './App.css'
+
+const appRoute = createBrowserRouter([
+  {
+    path:"/",
+    element:<LoginPage />
+  },
+  {
+    path:"browse",
+    element:<BrowsePage />
+  }
+
+])
+
+
 
 function App() {
 
 
   return (
     <>
-      
-      <h1 className='text-4xl '>Netflix GPT project is starting!!!</h1>
-    
+      <RouterProvider router={appRoute} />
     </>
   )
 }
