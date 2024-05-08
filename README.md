@@ -1,20 +1,25 @@
 # NetflixGPT
+
     Pages:
-     -Login/Signup
-     -Browse
-    
+     - Login/Signup
+     - Browse
+
     Components
-        Login/Signup
-        Footer
+       - Login/Signup
+       - Footer
 
 
 
 # Features
-    
-    -Signup/Login form at same page
-    Form validation
-    
-    if user is not logged in then redirect to login/signup page
 
-    -GPT
+    - Signup/Login form at same page
+    - Form validation
+    - Firebase setup
+    - Authentication
+    - Implemented SignIn/signUp user api
+    - Created redux store with userSlice
+
+
+
+    - GPT
         GPT api for movie suggestion for the user.

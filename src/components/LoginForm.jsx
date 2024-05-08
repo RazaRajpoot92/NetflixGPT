@@ -3,13 +3,14 @@ import { useRef, useState } from "react";
 import { checkValidation } from "../utils/validation";
 import {createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "../utils/firebase";
-
-
-
+import {useNavigate} from "react-router-dom"
 
 const LoginForm = ()=>{
 
     const [errorMessage, setErrorMessage] = useState(null)
+
+    const navigate = useNavigate()
+
     const email = useRef(null)
     const password = useRef(null)
 
@@ -34,8 +35,9 @@ const LoginForm = ()=>{
             .then((userCredential)=>{
                 const user = userCredential.user
                 console.log(user)
+                navigate("/browse")
             }).catch((error)=>{
-                const errCode = error.code
+
                 const errMessage = error.message
                 setErrorMessage(errMessage)
             })
@@ -45,9 +47,10 @@ const LoginForm = ()=>{
                 //signin
                 const user = userCredential.user
                 console.log(user)
+                navigate("/browse")
             })
             .catch((error)=>{
-                const errorMessage = error.message
+
                 setErrorMessage("Invalid Credential!")
             })
 

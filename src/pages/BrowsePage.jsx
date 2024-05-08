@@ -1,8 +1,13 @@
 import React from 'react'
+import Header from '../components/Header'
+
+
 
 const BrowsePage = () => {
   return (
-    <div>BrowsePage</div>
+    <div>
+      <Header />
+    </div>
   )
 }
 
