@@ -1,18 +1,22 @@
 import { useRef, useState } from "react";
 
 import { checkValidation } from "../utils/validation";
-import {createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth"
+import {createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile } from "firebase/auth"
 import { auth } from "../utils/firebase";
 import {useNavigate} from "react-router-dom"
+import { useDispatch } from "react-redux";
+import { addUser } from "../redux/userSlice";
 
 const LoginForm = ()=>{
 
     const [errorMessage, setErrorMessage] = useState(null)
+    const dispatch = useDispatch()
 
     const navigate = useNavigate()
 
     const email = useRef(null)
     const password = useRef(null)
+    const name = useRef(null)
 
     const [isLoginForm, setIsLoginForm] = useState(true)
 
@@ -35,7 +39,18 @@ const LoginForm = ()=>{
             .then((userCredential)=>{
                 const user = userCredential.user
                 console.log(user)
-                navigate("/browse")
+
+                updateProfile(user,{displayName: name.current.value})
+                .then(()=>{
+
+                    const {uid,displayName,email} = user
+                    dispatch(addUser({uid:uid,displayName:displayName,email:email}))
+
+                    navigate("/browse")
+                })
+                .catch((error)=>setErrorMessage(error.message))
+
+
             }).catch((error)=>{
 
                 const errMessage = error.message
@@ -46,7 +61,7 @@ const LoginForm = ()=>{
             .then((userCredential)=>{
                 //signin
                 const user = userCredential.user
-                console.log(user)
+               // console.log(user)
                 navigate("/browse")
             })
             .catch((error)=>{
@@ -63,7 +78,7 @@ const LoginForm = ()=>{
 
             <h1 className="text-3xl font-bold">{ isLoginForm?"Sign In":"Sign Up"}</h1>
 
-{!isLoginForm&&<input className="w-full bg-black border border-white rounded-md p-4 mt-6" type="text" placeholder="Enter your email here" /> }
+{!isLoginForm&&<input ref={name} className="w-full bg-black border border-white rounded-md p-4 mt-6" type="text" placeholder="Enter your name here" /> }
 
             <input ref={email} className="w-full bg-black border border-white rounded-md p-4 mt-6" type="email" placeholder="Enter your email here" />
             <input ref={password} className="w-full bg-black border border-white p-4 rounded-md mt-6 mb-2" type="password" placeholder="Enter your password here" />
