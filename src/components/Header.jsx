@@ -1,17 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { IoIosSearch } from "react-icons/io";
 import { FaCaretDown } from "react-icons/fa";
-import { useSelector } from 'react-redux';
-import {signOut} from "firebase/auth"
+import { useDispatch, useSelector } from 'react-redux';
+import {onAuthStateChanged, signOut} from "firebase/auth"
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
+import { addUser, removeUser } from '../redux/userSlice';
 
 
 const Header = () => {
 
+
     const [menu, setMenu] = useState(false)
     const navigate = useNavigate()
     const menuRef = useRef(null)
+    const dispatch = useDispatch()
 
     const user = useSelector(store=>store.user)
 
@@ -25,6 +28,32 @@ const Header = () => {
     }
 
     useEffect(()=>{
+
+       const unsubcribe =  onAuthStateChanged(auth,(user)=>{
+
+            if(user){
+              const {uid, email, displayName} = user
+              dispatch(addUser(
+                {
+                  uid:uid,
+                  email:email,
+                  displayName:displayName
+                }
+              ))
+
+              navigate("/browse")
+
+            }else
+            {
+              dispatch(removeUser())
+              navigate("/")
+
+            }
+
+          })
+
+
+
         const handleClickOutSide = (event)=>{
            if(menuRef.current && !menuRef.current.contains(event.target)){
 
@@ -36,6 +65,7 @@ const Header = () => {
        document.addEventListener("mousedown", handleClickOutSide)
 
         return()=>{
+            unsubcribe()
             document.removeEventListener("mousedown", handleClickOutSide)
         }
     },[])

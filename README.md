@@ -19,6 +19,9 @@
     - Created redux store with userSlice
     - Header created
     - Signout functionality implemented
+    - FixBug: Redirect to /browse page if login and vice-versa
+    - Unsubscribe onAuthChange
+    - Registered for TMBD for movies API
 
 
 # Features
