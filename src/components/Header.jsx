@@ -96,7 +96,7 @@ const Header = () => {
 
             <img className='w-8 h-8' src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="" />
 
-            <div ref={menuRef} className='relative user-menu'>
+            <div ref={menuRef} className='relative z-50 user-menu'>
              <FaCaretDown onClick={()=>setMenu(!menu)} color='white' className='cursor-pointer' size={18} />
 
              {menu&&<div className='bg-gray-800 top-8 rounded-md text-white flex flex-col items-center  p-2  right-0 absolute w-36 '>
