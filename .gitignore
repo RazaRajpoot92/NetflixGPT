@@ -12,6 +12,7 @@ dist
 build
 dist-ssr
 *.local
+src/constant/constants.js
 
 src/utils/firebase.js
 
