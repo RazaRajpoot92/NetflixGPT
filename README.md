@@ -9,6 +9,11 @@
        - Header
        - Login/Signup
        - Footer
+       - MainMovies
+       - MovieCard
+       - MoviesContainer
+       - VideoTitle
+       - BackgroundVideo
 
     Worked:
     - Signup/Login form at same page
@@ -22,6 +27,9 @@
     - FixBug: Redirect to /browse page if login and vice-versa
     - Unsubscribe onAuthChange
     - Registered for TMBD for movies API
+    - Hero section added
+    - Movies list added
+
 
 
 # Features

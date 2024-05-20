@@ -6,7 +6,7 @@ import { CiCircleInfo } from "react-icons/ci";
 
 const VideoTitle = ({title, overview}) => {
   return (
-    <div className='py-20 absolute bg-gradient-to-b from-black/40 to-black/40 text-white w-screen aspect-video px-14'>
+    <div className='py-20 absolute bg-gradient-to-b from-black/40 to-black/40 text-white aspect-video px-14'>
 
             <h1 className='text-4xl mt-48 font-bold' >{title}</h1>
             <p className='text-lg w-1/3 py-8 text-white '>{overview}</p>
