@@ -11,7 +11,7 @@ const MainMovie = () => {
 
     const mainMovie = movies[5]
     const {original_title, overview, id} = mainMovie
-    console.log(id)
+
 
   return (
     <div className=''>

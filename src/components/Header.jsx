@@ -6,6 +6,10 @@ import {onAuthStateChanged, signOut} from "firebase/auth"
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { addUser, removeUser } from '../redux/userSlice';
+import { toggleGptSearchView } from '../redux/gptSlice';
+
+import { LANGUAGE_OPTION } from '../constant/language';
+import { changeLanguage } from '../redux/configSlice';
 
 
 const Header = () => {
@@ -70,6 +74,14 @@ const Header = () => {
         }
     },[])
 
+    const handleGptClick = ()=>{
+      dispatch(toggleGptSearchView())
+    }
+
+    const handleLangChange = (e)=>{
+      dispatch(changeLanguage(e.target.value))
+    }
+
   return (
     <div className='h-20 px-8 flex justify-between items-center bg-black'>
 
@@ -83,6 +95,14 @@ const Header = () => {
                 <h2>Films</h2>
                 <h2>New & Popular</h2>
             </div>
+       </div>
+
+       <div>
+          <button
+
+            onClick={handleGptClick}
+
+          className='py-2 px-10 font-semibold border border-red-700 hover:text-red-700 hover:bg-transparent  rounded-md bg-red-600 text-white'>GPT Search</button>
        </div>
 
         <div className='flex items-center gap-2'>
@@ -105,6 +125,17 @@ const Header = () => {
              </div>}
 
             </div>
+
+            <select
+              onChange={handleLangChange}
+
+            className='p-2 bg-gray-700 rounded-sm text-white' name="" id="">
+
+
+            {LANGUAGE_OPTION.map(lang=> <option value={lang.identifier}>{lang.name}</option>)}
+
+
+            </select>
         </div>
 
     </div>

@@ -16,8 +16,8 @@ const MovieList = ({title,movies}) => {
             {
               breakpoint: 1024,
               settings: {
-                slidesToShow: 9,
-                slidesToScroll: 8,
+                slidesToShow: 5,
+                slidesToScroll: 4,
                 infinite: true,
 
               }
@@ -25,15 +25,15 @@ const MovieList = ({title,movies}) => {
             {
               breakpoint: 600,
               settings: {
-                slidesToShow: 6,
-                slidesToScroll: 5,
+                slidesToShow: 3,
+                slidesToScroll: 2,
                 initialSlide: 2
               }
             },
             {
               breakpoint: 480,
               settings: {
-                slidesToShow: 4,
+                slidesToShow: 2,
                 slidesToScroll: 3
               }
             }
@@ -42,11 +42,11 @@ const MovieList = ({title,movies}) => {
 
   return (
 
-    <div className='py-2 text-white '>
+    <div className='text-white '>
         <h1 className='text-2xl font-semibold mb-2'>{title}</h1>
 
         <Slider {...settings}>
-            {movies?.map((movie)=> <MovieCard movie ={movie} /> )}
+            {movies?.map((movie)=> <MovieCard key={movie.id} movie ={movie} /> )}
         </Slider>
     </div>
   )
