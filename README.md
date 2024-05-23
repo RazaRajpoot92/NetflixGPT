@@ -3,6 +3,7 @@
     Pages:
      - Login/Signup
      - Browse
+     - GPTSearchPage
 
     Components
        - Body
@@ -14,6 +15,8 @@
        - MoviesContainer
        - VideoTitle
        - BackgroundVideo
+       - GPTSearchBar
+       -
 
     Worked:
     - Signup/Login form at same page
@@ -29,6 +32,9 @@
     - Registered for TMBD for movies API
     - Hero section added
     - Movies list added
+    - GPT search page added
+    - Multi language features added
+    - GPTslice added in redux store
 
 
 

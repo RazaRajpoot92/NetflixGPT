@@ -15,12 +15,15 @@ import { changeLanguage } from '../redux/configSlice';
 const Header = () => {
 
 
+
+
     const [menu, setMenu] = useState(false)
     const navigate = useNavigate()
     const menuRef = useRef(null)
     const dispatch = useDispatch()
 
     const user = useSelector(store=>store.user)
+    const showGPT = useSelector(store=>store.gpt.showGpt)
 
 
     const handleSignOut = ()=>{
@@ -102,7 +105,7 @@ const Header = () => {
 
             onClick={handleGptClick}
 
-          className='py-2 px-10 font-semibold border border-red-700 hover:text-red-700 hover:bg-transparent  rounded-md bg-red-600 text-white'>GPT Search</button>
+          className='py-2 px-10 font-semibold border border-red-700 hover:text-red-700 hover:bg-transparent  rounded-md bg-red-600 text-white'>{showGPT?"Back Home":"GPT Search"}</button>
        </div>
 
         <div className='flex items-center gap-2'>
@@ -126,16 +129,17 @@ const Header = () => {
 
             </div>
 
-            <select
+           {showGPT&& <select
               onChange={handleLangChange}
 
             className='p-2 bg-gray-700 rounded-sm text-white' name="" id="">
 
 
-            {LANGUAGE_OPTION.map(lang=> <option value={lang.identifier}>{lang.name}</option>)}
+            {LANGUAGE_OPTION.map(lang=> <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
 
 
             </select>
+    }
         </div>
 
     </div>
