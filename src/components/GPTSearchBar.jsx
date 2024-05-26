@@ -28,7 +28,7 @@ const handleGptSearchClick = async()=>{
   return (
     <div className='flex justify-center mt-32'>
       <form action=""
-      className='w-1/3 grid grid-cols-12 bg-black/80 rounded-lg shadow-lg shadow-black p-10'
+      className='w-1/2 xxl:w-1/3 grid grid-cols-12 bg-black/80 rounded-lg shadow-lg shadow-black p-10'
       onSubmit={(e)=>e.preventDefault()}>
 
         <input

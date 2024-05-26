@@ -9,7 +9,7 @@ const MainMovie = () => {
 
     if(!movies) return;
 
-    const mainMovie = movies[4]
+    const mainMovie = movies[10]
     const {original_title, overview, id} = mainMovie
 
 
